@@ -107,4 +107,6 @@ MIT License - see [LICENSE](./LICENSE) for details.
 
 If you found this theme helpful, give it a star on GitHub!
 
-Built with 🫀 by [Nearmelab](https://nearmelab.digital)
+Designed from 🫀 by [Nearmelab](https://nearmelab.digital)
+
+[![Built with Astro](https://astro.badg.es/v2/built-with-astro/medium.svg)](https://astro.build)
