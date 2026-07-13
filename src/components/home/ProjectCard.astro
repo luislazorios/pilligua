@@ -25,7 +25,6 @@ const isSVG = image?.format === 'svg';
     <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500 z-10" />
     
     {isSVG ? (
-      <!-- For SVGs, use img tag to avoid rasterization issues -->
       <img 
         src={image.src}
         alt={alt}
