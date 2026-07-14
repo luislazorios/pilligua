@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="https://astro.build">
-    <img src="https://img.shields.io/badge/Astro-6.0-FF5D01?logo=astro&logoColor=white&style=for-the-badge" alt="Astro v7" />
+    <img src="https://img.shields.io/badge/Astro-7.0-FF5D01?logo=astro&logoColor=white&style=for-the-badge" alt="Astro v7" />
   </a>
   <a href="https://tailwindcss.com">
     <img src="https://img.shields.io/badge/Tailwind-4.0-06B6D4?logo=tailwindcss&logoColor=white&style=for-the-badge" alt="Tailwind CSS v4" />
