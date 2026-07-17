@@ -1,0 +1,86 @@
+---
+export interface Props {
+  totalPosts: number;
+  postsPerPage: number;
+  currentPage: number;
+  baseUrl?: string;
+}
+
+const { totalPosts, postsPerPage, currentPage, baseUrl = '/blog' } = Astro.props;
+
+const totalPages = Math.ceil(totalPosts / postsPerPage);
+const hasPrev = currentPage > 1;
+const hasNext = currentPage < totalPages;
+
+// Generate page numbers to show
+const getPageNumbers = () => {
+  const pages = [];
+  const maxVisible = 5;
+  
+  if (totalPages <= maxVisible) {
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(i);
+    }
+  } else {
+    pages.push(1);
+    if (currentPage > 3) pages.push('...');
+    
+    const start = Math.max(2, currentPage - 1);
+    const end = Math.min(totalPages - 1, currentPage + 1);
+    
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
+    }
+    
+    if (currentPage < totalPages - 2) pages.push('...');
+    pages.push(totalPages);
+  }
+  
+  return pages;
+};
+
+const pageNumbers = getPageNumbers();
+---
+
+<div class="mt-section-padding-y flex flex-col items-center gap-8">
+  <div class="flex items-center gap-8 font-nav-link text-nav-link uppercase tracking-widest">
+    {hasPrev && (
+      <a 
+        href={`${baseUrl}/${currentPage - 1}`} 
+        class="flex items-center gap-2 text-text-muted hover:text-primary transition-colors duration-300"
+      >
+        <span class="material-symbols-outlined">west</span>
+        <span>Previous</span>
+      </a>
+    )}
+    
+    <div class="flex items-center gap-6">
+      {pageNumbers.map((page, index) => (
+        page === '...' ? (
+          <span key={`ellipsis-${index}`} class="text-text-muted opacity-50">...</span>
+        ) : (
+          <a 
+            key={page}
+            href={`${baseUrl}/${page}`}
+            class={page === currentPage 
+              ? 'text-primary border-b-2 border-primary pb-1 font-bold' 
+              : 'text-text-muted hover:text-on-background transition-colors duration-300'
+            }
+          >
+            {String(page).padStart(2, '0')}
+          </a>
+        )
+      ))}
+    </div>
+    
+    {hasNext && (
+      <a 
+        href={`${baseUrl}/${currentPage + 1}`} 
+        class="flex items-center gap-2 text-on-background hover:text-primary transition-colors duration-300"
+      >
+        <span>Next</span>
+        <span class="material-symbols-outlined">east</span>
+      </a>
+    )}
+  </div>
+</div>

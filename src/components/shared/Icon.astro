@@ -9,6 +9,7 @@ const { name, class: className = '', size = 24 } = Astro.props;
 
 // Dynamic import based on icon name
 const icons = {
+  bookmark: (await import('~icons/tabler/bookmark')).default,
   mail: (await import('~icons/tabler/mail')).default,
   phone: (await import('~icons/tabler/phone')).default,
   map: (await import('~icons/tabler/map-pin')).default,

@@ -52,6 +52,17 @@ const currentPath = Astro.url.pathname;
       >
         About
       </a>
+      <a 
+        href="/blog" 
+        class:list={[
+          "text-sm font-semibold transition-colors",
+          currentPath === '/blog' || currentPath.startsWith('/blog/')
+            ? "text-primary" 
+            : "text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary"
+        ]}
+      >
+        Blog
+      </a>
     </nav>
 
     <!-- CTA -->
@@ -66,8 +77,8 @@ const currentPath = Astro.url.pathname;
       
       <!-- Mobile menu button -->
       <button class="md:hidden p-2 text-slate-600 dark:text-slate-400" aria-label="Open menu">
-  <Icon name="menu" size={24} />
-</button>
+        <Icon name="menu" size={24} />
+      </button>
     </div>
   </Container>
 </header>

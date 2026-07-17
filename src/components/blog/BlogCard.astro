@@ -1,0 +1,64 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+export interface Props {
+  title: string;
+  pubDate: Date;
+  heroImage?: ImageMetadata | string;
+  tags?: string[];
+  author?: string;
+  slug: string;
+  featured?: boolean;
+}
+
+const { title, pubDate, heroImage, tags, author, slug, featured = false } = Astro.props;
+---
+
+<article class={`group cursor-pointer ${featured ? 'col-span-full' : ''}`}>
+  <a href={`/blog/${slug}`} class="block">
+    {heroImage && (
+      <div class="aspect-[4/3] overflow-hidden bg-surface-container mb-stack-sm">
+        <Image
+          src={heroImage}
+          alt={title}
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          loading={featured ? 'eager' : 'lazy'}
+          fetchpriority={featured ? 'high' : 'auto'}
+          format="webp"
+          fit="cover"
+          widths={featured ? [800, 1200, 1600] : [400, 600, 800]}
+          sizes={featured ? '100vw' : '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'}
+          quality={80}
+        />
+      </div>
+    )}
+    
+    <div class="flex flex-col gap-2">
+      <div class="flex justify-between items-center">
+        {tags?.[0] && (
+          <span class="font-label-caps text-label-caps text-primary uppercase">
+            {tags[0]}
+          </span>
+        )}
+        <span class="font-label-caps text-label-caps text-text-muted">
+          {pubDate.toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric', 
+            year: 'numeric' 
+          })}
+        </span>
+      </div>
+      
+      <h3 class={`font-title-md text-title-md text-on-background group-hover:text-primary transition-colors duration-200 ${featured ? 'text-2xl' : ''}`}>
+        {title}
+      </h3>
+      
+      {author && (
+        <span class="font-body-md text-text-muted text-sm mt-1">
+          By {author}
+        </span>
+      )}
+    </div>
+  </a>
+</article>
