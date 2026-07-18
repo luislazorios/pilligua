@@ -2,7 +2,7 @@
 title: 'Material Innovation in Modern Architecture'
 description: 'How new materials and technologies are expanding the possibilities of architectural design.'
 pubDate: 'Aug 20 2024'
-heroImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCwSCvBaeqA7AG0NLdEFzjQj37Z3858SphvqpcaWcMDd6LZN5fQCVaeZvEIxQZDiE0BEpFMvEx_X-CwxIijpdogaknXSTNZ-XzSfl1qLjsNaNSbcC1nOYLSQqDF6bXpOSdAs6vMwFE1Cnnd2xwzJ1Dkf3YGaIKEbJYlx43LtrVa1uOpx5T_fc3y9IXWymFOrLixM1PAfk__vlLnTEJBqRJgU9zwoAFHxdisQxuLdQPz128swCAvKPydfw'
+heroImage: 'https://images.pexels.com/photos/6194755/pexels-photo-6194755.jpeg?auto=compress&cs=tinysrgb&w=1600'
 tags: ['Innovation', 'Materials']
 author: 'Marcus Thorne'
 featured: false

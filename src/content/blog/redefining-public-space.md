@@ -1,8 +1,8 @@
 ---
 title: 'Redefining Public Space through Structural Geometry'
-description: 'How geometric patterns in urban design create harmonious public spaces.'
+description: 'How geometric patterns in urban design create harmonious public spaces that invite connection and reflection.'
 pubDate: 'Oct 18 2024'
-heroImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDG1oJF2HPE8ggwhZokOPTumnkHzBPFj0gUqZnLJqjLYBRPCmhH8eo157X1Rlaez07RO3imNT_O_aYIQR5x2GrdKopaTjChgEqpneZLFF4CJebda9-0xx0bEyumBXTuorjlrfXwsHgkR0LcwYACLQ6YsVkRX7qXQGOUJI0JHNqKuEPLbh9x0zJ1nxAeejYrz0J82AUtMhnMvCS5FkT3PBEg4JoGkpNYXZBIsodO0iYt6k_JmRsf0_9N5w'
+heroImage: 'https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=1600'
 tags: ['Urbanism', 'Geometry']
 author: 'Elena Rossi'
 featured: false
@@ -19,3 +19,7 @@ Urban spaces designed with geometric principles create a sense of order and calm
 1. **Rhythm** - Repetition creates visual harmony
 2. **Proportion** - Scale relative to human movement
 3. **Materiality** - Textures that invite touch
+
+## Case Study: Urban Park Design
+
+Consider the design of modern urban parks. The use of circular pathways and rectangular reflecting pools creates a dialogue between the organic and the structured, offering visitors a sense of both freedom and containment.

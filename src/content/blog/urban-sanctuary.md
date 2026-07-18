@@ -2,7 +2,7 @@
 title: 'The Urban Sanctuary: Designing for Mental Wellness'
 description: 'How architects are creating spaces that promote mental health and well-being in dense urban environments.'
 pubDate: 'Aug 05 2024'
-heroImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBOBy_XY69Uz6A1NhTquDwhcmyL2C0sISytoYRFV2UPiYDgPhssJPSpmA0Qs97P_X07vCwB_bmi-TAoyAxMNFZA6vDU1tnDa2wjVxAlkBouaGWojm75rV1O8B4o6pIhGoVvRkCSe4PLHNWurZRmcal_h3XkMHZ2qxzphT2YNNEZ5xCloSxjI9rjt4njmXawZ507d4zR8AXjUR3AuuK7SubkZ3tk0efLvbA7q2k1Mih-kuTMAhxIYNhcUw'
+heroImage: 'https://images.pexels.com/photos/3058161/pexels-photo-3058161.jpeg?auto=compress&cs=tinysrgb&w=1600'
 tags: ['Living', 'Wellness']
 author: 'Studio Alpha'
 featured: false
