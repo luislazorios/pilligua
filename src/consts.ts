@@ -1,3 +1,5 @@
+// src/consts.ts
+
 // Site metadata
 export const SITE_TITLE = 'Studio Alpha';
 export const SITE_DESCRIPTION = 'Architecture studio specializing in minimalist design.';
@@ -10,3 +12,24 @@ export const BLOG_URL = '/blog';
 
 // Author defaults
 export const DEFAULT_AUTHOR = 'Studio Alpha';
+
+// 🆕 Blog-related constants
+export const BLOG_CATEGORIES = [
+  'All posts',
+  'Architecture',
+  'Materials',
+  'Philosophy',
+  'Innovation',
+  'Interior Design',
+  'Urbanism',
+  'Wellness'
+] as const;
+
+export const BLOG_SOCIAL_SHARE = {
+  twitter: true,
+  linkedin: true,
+  facebook: true,
+  email: true
+} as const;
+
+export const DEFAULT_BLOG_IMAGE = '/favicon.svg';
