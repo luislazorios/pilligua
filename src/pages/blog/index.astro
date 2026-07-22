@@ -1,7 +1,12 @@
 ---
+// src/pages/blog/index.astro
 import { getCollection } from 'astro:content';
 import BlogLayout from '../../layouts/BlogLayout.astro';
-import Icon from '../../components/shared/Icon.astro';
+import BlogFeaturedPost from '../../components/blog/BlogFeaturedPost.astro';
+import BlogHeader from '../../components/blog/BlogHeader.astro';
+import BlogGrid from '../../components/blog/BlogGrid.astro';
+import BlogPagination from '../../components/blog/BlogPagination.astro';
+import BlogNewsletter from '../../components/blog/BlogNewsletter.astro';
 import { BLOG_TITLE, BLOG_DESCRIPTION, POSTS_PER_PAGE } from '../../consts';
 
 // Get all blog posts
@@ -17,7 +22,7 @@ const featuredPost = posts.length > 0
   ? (posts.find(post => post.data.featured) || posts[0])
   : null;
 
-// Get regular posts
+// Get regular posts (excluding featured)
 const regularPosts = featuredPost 
   ? posts.filter(post => post.id !== featuredPost.id)
   : posts;
@@ -25,205 +30,40 @@ const regularPosts = featuredPost
 // Pagination
 const paginatedPosts = regularPosts.slice(0, POSTS_PER_PAGE);
 const totalPosts = regularPosts.length;
+const currentPage = 1; // Will be dynamic when implementing pagination
 ---
 
 <BlogLayout title={BLOG_TITLE} description={BLOG_DESCRIPTION}>
-  <!-- ============================================================ -->
-  <!-- SECTION 1: FEATURED POST - SPLIT LAYOUT                      -->
-  <!-- ============================================================ -->
-  <section class="w-full bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800">
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 min-h-[80vh]">
-      <!-- Image Column -->
-      <div class="lg:col-span-7 relative overflow-hidden order-2 lg:order-1">
-        <img 
-          alt={featuredPost?.data.title || 'Featured post'} 
-          class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" 
-          src={typeof featuredPost?.data.heroImage === 'string' ? featuredPost.data.heroImage : featuredPost?.data.heroImage?.src || 'https://lh3.googleusercontent.com/aida-public/AB6AXuBuSW1Rz6co1S2UBc7gkqP3Hn4rQ9pWVHdev07Y22Yf6VOUvSudvQQdok4ZCWL3Uy04hCe6b1Wc9rTxgsYEJz_rNew6a1_Qm_kd-CXGeixQvBj3aqjB7bsqc5sqEtmyt-LRkP3orknp0R_ZOUiX7YFDzieuZoy1WMqw_cDIPofQn3Rvw_DksTCoM6hjZ8nOxuflUtrYhutw9UQwu-cYNylLiXO9B48vx5-kEnWDdDLhmRGEbuqojmiLPw'}
-        />
-      </div>
-      
-      <!-- Content Column -->
-      <div class="lg:col-span-5 px-6 py-16 flex flex-col justify-center gap-8 order-1 lg:order-2 bg-surface-light dark:bg-background-dark/50">
-        <div class="flex items-center gap-4">
-          <span class="h-[1px] w-12 bg-primary"></span>
-          <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary">Featured Insight</span>
-        </div>
-        <h1 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.1]">
-          {featuredPost ? (
-            <>{featuredPost.data.title}</>
-          ) : (
-            <>The Power of <br/><span class="text-primary">Negative Space</span> <br/>in Modern Living</>
-          )}
-        </h1>
-        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-md">
-          {featuredPost?.data.description || 'Exploring how reductionist architecture creates mental clarity and enduring aesthetic value in an increasingly cluttered digital world.'}
-        </p>
-        <div class="flex flex-col gap-4 mt-4">
-          <div class="flex items-center gap-4 text-xs font-bold tracking-[0.2em] text-slate-500 dark:text-slate-400 uppercase">
-            <span>Words by {featuredPost?.data.author || 'Studio Alpha'}</span>
-            <span class="w-1 h-1 bg-slate-300 dark:bg-slate-600 rounded-full"></span>
-            <span>{Math.ceil((featuredPost?.body?.split(/\s+/).length || 200) / 200)} Min Read</span>
-          </div>
-          <a 
-            class="inline-flex items-center gap-4 text-sm font-bold uppercase tracking-wider text-primary hover:gap-6 transition-all duration-300 group" 
-            href={featuredPost ? `/blog/${featuredPost.id}` : '#'}
-          >
-            <span>Read Full Story</span>
-            <Icon name="arrow-right" size={20} class="group-hover:translate-x-2 transition-transform duration-300" />
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- FEATURED POST -->
+  {featuredPost && (
+    <BlogFeaturedPost post={featuredPost} />
+  )}
 
-  <!-- ============================================================ -->
-  <!-- SECTION 2: BLOG GRID                                         -->
-  <!-- ============================================================ -->
-  <section class="max-w-7xl mx-auto px-6 py-24">
-    <!-- Filter Bar -->
-    <div class="flex items-baseline justify-between mb-16 border-b border-slate-200 dark:border-slate-800 pb-8">
-      <h2 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white">
-        Latest Perspectives
-      </h2>
-      <div class="hidden md:flex gap-8">
-        <a class="text-xs font-bold uppercase tracking-[0.2em] text-primary border-b-2 border-primary" href="#">All posts</a>
-        <a class="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Architecture</a>
-        <a class="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Materials</a>
-        <a class="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">Philosophy</a>
-      </div>
-    </div>
+  <!-- BLOG GRID -->
+  <section class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+    <!-- Header -->
+    <BlogHeader 
+      title="Latest Perspectives"
+      showFilters={true}
+      activeCategory="All posts"
+      class="mb-12"
+    />
 
-    <!-- Blog Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-x-8 gap-y-16">
-      
-      {paginatedPosts.map((post, index) => {
-        // Determine grid column span based on position
-        let colSpan = 'md:col-span-4';
-        let imageAspect = 'aspect-[4/3]';
-        let titleSize = 'text-xl';
-        let showExcerpt = false;
-        
-        if (index === 0) {
-          colSpan = 'md:col-span-8';
-          imageAspect = 'aspect-[16/9]';
-          titleSize = 'text-3xl md:text-4xl';
-          showExcerpt = true;
-        } else if (index === 1) {
-          colSpan = 'md:col-span-4';
-          imageAspect = 'aspect-square';
-          titleSize = 'text-xl';
-        } else if (index === 2) {
-          colSpan = 'md:col-span-4';
-          imageAspect = 'aspect-[3/4]';
-          titleSize = 'text-xl';
-        } else if (index === 3) {
-          colSpan = 'md:col-span-8';
-          imageAspect = 'aspect-[16/7]';
-          titleSize = 'text-2xl md:text-3xl';
-          showExcerpt = true;
-        } else {
-          colSpan = 'md:col-span-6';
-          imageAspect = 'aspect-[16/10]';
-          titleSize = 'text-xl';
-        }
-        
-        return (
-          <article class={`${colSpan} group cursor-pointer`}>
-            <a href={`/blog/${post.id}`} class="block">
-              <div class={`relative overflow-hidden rounded mb-4 ${imageAspect} bg-slate-100 dark:bg-slate-800`}>
-                <img 
-                  alt={post.data.title} 
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale hover:grayscale-0" 
-                  src={typeof post.data.heroImage === 'string' ? post.data.heroImage : post.data.heroImage?.src || 'https://lh3.googleusercontent.com/aida-public/AB6AXuAijsk9DnuJXcHeii_c0hayWOSNhVpavLmM1PVFp4g1vg2403gMp9HgwhwuazpUyGYF5Ox0Cq6hhdfLPKhJk9Lxedo-asfbhxt6Ne1-l75FSLMsqRbJvuO3mztM0LIZN7zaaPZ4nW3ZSTM2-TQna4BUiso5ZJ-NRRYTgqE9IrdQD3crHpycIjIiqIRZrcAmsowjXca0GoYqFtwGizrhZEQs9jBK0uYlwZgO4SarTFow_UzUtyv24nohGw'}
-                />
-              </div>
-              
-              <div class="flex items-center gap-4 mb-2">
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary">
-                  {post.data.tags?.[0] || 'Architecture'}
-                </span>
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
-                  {post.data.pubDate.toLocaleDateString('en-US', { 
-                    month: 'short', 
-                    day: 'numeric', 
-                    year: 'numeric' 
-                  }).toUpperCase()}
-                </span>
-              </div>
-              
-              <h3 class={`font-black tracking-tight text-slate-900 dark:text-white group-hover:text-primary transition-colors duration-300 ${titleSize}`}>
-                {post.data.title}
-              </h3>
-              
-              {showExcerpt && (
-                <p class="text-slate-600 dark:text-slate-400 leading-relaxed mt-2 line-clamp-2">
-                  {post.data.description}
-                </p>
-              )}
-            </a>
-          </article>
-        );
-      })}
-
-    </div>
+    <!-- Grid -->
+    <BlogGrid posts={paginatedPosts} />
 
     <!-- Pagination -->
     {totalPosts > POSTS_PER_PAGE && (
-      <div class="mt-24 pt-12 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-8">
-        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
-          <span>Displaying</span>
-          <span class="text-primary font-black">{Math.min(POSTS_PER_PAGE, totalPosts)}</span>
-          <span>of</span>
-          <span class="text-primary font-black">{totalPosts}</span>
-          <span>Insights</span>
-        </div>
-        <nav class="flex items-center gap-2">
-          <a class="w-12 h-12 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-900 dark:text-white hover:bg-primary hover:text-white transition-all rounded" href="#">
-            <Icon name="arrow-left" size={20} />
-          </a>
-          <div class="flex items-center">
-            <a class="w-12 h-12 bg-primary text-white flex items-center justify-center font-bold text-sm rounded-l" href="#">01</a>
-            <a class="w-12 h-12 border-y border-r border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-primary text-sm font-medium" href="#">02</a>
-            <a class="w-12 h-12 border-y border-r border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-primary text-sm font-medium" href="#">03</a>
-            <div class="w-12 h-12 border-y border-r border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 dark:text-slate-600">...</div>
-            <a class="w-12 h-12 border-y border-r border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-primary text-sm font-medium rounded-r" href="#">12</a>
-          </div>
-          <a class="w-12 h-12 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-900 dark:text-white hover:bg-primary hover:text-white transition-all rounded" href="#">
-            <Icon name="arrow-right" size={20} />
-          </a>
-        </nav>
-      </div>
+      <BlogPagination
+        totalPosts={totalPosts}
+        postsPerPage={POSTS_PER_PAGE}
+        currentPage={currentPage}
+        baseUrl="/blog"
+        class="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800"
+      />
     )}
   </section>
 
-  <!-- ============================================================ -->
-  <!-- SECTION 3: NEWSLETTER - DARK                                 -->
-  <!-- ============================================================ -->
-  <section class="bg-slate-900 dark:bg-slate-950 py-24 text-white">
-    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-      <div>
-        <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-tight mb-6">
-          Stay <br/>Refined.
-        </h2>
-        <p class="text-lg text-slate-400 max-w-sm leading-relaxed">
-          Weekly insights on minimalism, architecture, and the pursuit of essential design delivered to your inbox.
-        </p>
-      </div>
-      <div>
-        <form class="flex flex-col gap-6">
-          <div class="relative">
-            <input 
-              class="w-full bg-transparent border-0 border-b-2 border-white/20 focus:border-primary focus:ring-0 text-white py-4 placeholder:text-white/30 uppercase tracking-widest text-sm font-bold transition-all outline-none" 
-              placeholder="ENTER YOUR EMAIL" 
-              type="email"
-            />
-            <button class="absolute right-0 bottom-4 text-white hover:text-primary transition-colors" type="submit">
-              <Icon name="arrow-right" size={28} />
-            </button>
-          </div>
-          <p class="text-[10px] uppercase tracking-[0.2em] text-white/40">By subscribing you agree to our privacy policy.</p>
-        </form>
-      </div>
-    </div>
-  </section>
+  <!-- NEWSLETTER -->
+  <BlogNewsletter />
 </BlogLayout>

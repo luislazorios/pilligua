@@ -1,4 +1,5 @@
 ---
+// src/components/shared/Icon.astro
 export interface Props {
   name: string;
   class?: string;
@@ -32,11 +33,14 @@ const icons = {
   chevronRight: (await import('~icons/tabler/chevron-right')).default,
   plus: (await import('~icons/tabler/plus')).default,
   minus: (await import('~icons/tabler/minus')).default,
-   'arrow-narrow-right': (await import('~icons/tabler/arrow-narrow-right')).default,
+  'arrow-narrow-right': (await import('~icons/tabler/arrow-narrow-right')).default,
   'chevron-down': (await import('~icons/tabler/chevron-down')).default,
   'brand-instagram': (await import('~icons/tabler/brand-instagram')).default,
   'brand-linkedin': (await import('~icons/tabler/brand-linkedin')).default,
   'brand-behance': (await import('~icons/tabler/brand-behance')).default,
+  'brand-twitter': (await import('~icons/tabler/brand-twitter')).default, // 🆕
+  'brand-facebook': (await import('~icons/tabler/brand-facebook')).default, // 🆕
+  'link': (await import('~icons/tabler/link')).default, // 🆕
   'eye': (await import('~icons/tabler/eye')).default,
   'map-pin': (await import('~icons/tabler/map-pin')).default,
   'copyright': (await import('~icons/tabler/copyright')).default,
