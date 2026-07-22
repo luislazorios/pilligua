@@ -45,9 +45,9 @@ These images are used in the blog section.
 | The Architecture of Silence | [View](https://images.pexels.com/photos/2095791/pexels-photo-2095791.jpg) | [Kaique Rocha](https://www.pexels.com/@kaiquerocha) |
 | The Transparency Paradox | [View](https://images.pexels.com/photos/276724/pexels-photo-276724.jpg) | [Pixabay](https://www.pexels.com/@pixabay) |
 | Verticality and the Void | [View](https://images.pexels.com/photos/2074910/pexels-photo-2074910.jpg) | [Quang Nguyen Vinh](https://www.pexels.com/@quang-nguyen-vinh) |
-| Material Innovation | [View](https://images.pexels.com/photos/6194755/pexels-photo-6194755.jpg) | [ThisIsEngineering](https://www.pexels.com/@thisisengineering) |
+| Material Innovation | [View](https://images.pexels.com/photos/17509941/pexels-photo-17509941.jpeg') | [Jakub Zerdzicki](https://www.pexels.com/@494676239/) |
 | The Urban Sanctuary | [View](https://images.pexels.com/photos/3058161/pexels-photo-3058161.jpg) | [Max Vakhtbovych](https://www.pexels.com/@max-vakhtbovych) |
-| Digital Fabrication | [View](https://images.pexels.com/photos/1288485/pexels-photo-1288485.jpg) | [Pixabay](https://www.pexels.com/@pixabay) |
+| Digital Fabrication | [View](https://images.pexels.com/photos/38611501/pexels-photo-38611501.jpeg) | [Jakub Zerdzicki](https://www.pexels.com/@494676239/) |
 
 ---
 

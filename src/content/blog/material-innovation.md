@@ -2,9 +2,9 @@
 title: 'Material Innovation in Modern Architecture'
 description: 'How new materials and technologies are expanding the possibilities of architectural design.'
 pubDate: 'Aug 20 2024'
-heroImage: 'https://images.pexels.com/photos/6194755/pexels-photo-6194755.jpeg?auto=compress&cs=tinysrgb&w=1600'
+heroImage: 'https://images.pexels.com/photos/38611501/pexels-photo-38611501.jpeg'
 tags: ['Innovation', 'Materials']
-author: 'Marcus Thorne'
+author: 'Jakub Zerdzicki'
 featured: false
 ---
 

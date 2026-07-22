@@ -2,9 +2,9 @@
 title: 'Digital Fabrication and the Future of Construction'
 description: 'How digital tools like robotics and 3D printing are transforming how we build.'
 pubDate: 'Jul 22 2024'
-heroImage: 'https://images.pexels.com/photos/1288485/pexels-photo-1288485.jpeg?auto=compress&cs=tinysrgb&w=1600'
+heroImage: 'https://images.pexels.com/photos/19149826/pexels-photo-19149826.jpeg'
 tags: ['Innovation', 'Future']
-author: 'Elena Rossi'
+author: 'Jakub Zerdzicki'
 featured: false
 ---
 
