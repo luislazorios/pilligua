@@ -2,7 +2,11 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main] # Cambia a 'master' si tu rama principal se llama así
+    branches: [main]
+
+# 1. ADD THIS SECTION HERE:
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 permissions:
   contents: read
