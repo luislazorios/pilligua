@@ -8,7 +8,10 @@ import basicSsl from '@vitejs/plugin-basic-ssl';
 import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
-  site: 'https://luislazorios.github.io/pilligua/', // Add this line
+ site: 'https://luislazorios.github.io',
+  
+  // Agrega el nombre exacto de tu repositorio con una barra al inicio
+  base: '/pilligua',
   integrations: [mdx()],
   vite: {
     plugins: [
