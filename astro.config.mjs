@@ -7,6 +7,7 @@ import Icons from 'unplugin-icons/vite';
 export default defineConfig({
   site: 'https://luislazorios.github.io',
   base: '/pilligua',
+  trailingSlash: 'always',
   output: 'static', // Genera HTML/CSS/JS estático compatible con GitHub Pages
   integrations: [mdx()],
   vite: {
