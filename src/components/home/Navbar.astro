@@ -2,13 +2,15 @@
 import Container from '../shared/Container.astro';
 import Icon from '../shared/Icon.astro';
 
+// Se obtiene la ruta base configurada (/pilligua/)
+const baseUrl = import.meta.env.BASE_URL;
 const currentPath = Astro.url.pathname;
 ---
 
 <header class="fixed top-0 w-full z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-100 dark:border-slate-800">
   <Container class="h-20 flex items-center justify-between">
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-3 group cursor-pointer">
+    <a href={baseUrl} class="flex items-center gap-3 group cursor-pointer">
       <div class="text-primary">
         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 48 48">
           <path d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z" />
@@ -20,10 +22,10 @@ const currentPath = Astro.url.pathname;
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex items-center gap-10">
       <a 
-        href="/" 
+        href={baseUrl} 
         class:list={[
           "text-sm font-semibold transition-colors",
-          currentPath === '/' 
+          currentPath === baseUrl || currentPath === `${baseUrl}/`
             ? "text-primary" 
             : "text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary"
         ]}
@@ -31,10 +33,10 @@ const currentPath = Astro.url.pathname;
         Home
       </a>
       <a 
-        href="/projects" 
+        href={`${baseUrl}projects/`} 
         class:list={[
           "text-sm font-semibold transition-colors",
-          currentPath === '/projects' || currentPath.startsWith('/projects/')
+          currentPath.includes('/projects')
             ? "text-primary" 
             : "text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary"
         ]}
@@ -42,10 +44,10 @@ const currentPath = Astro.url.pathname;
         Projects
       </a>
       <a 
-        href="/about" 
+        href={`${baseUrl}about/`} 
         class:list={[
           "text-sm font-semibold transition-colors",
-          currentPath === '/about'
+          currentPath.includes('/about')
             ? "text-primary" 
             : "text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary"
         ]}
@@ -53,10 +55,10 @@ const currentPath = Astro.url.pathname;
         About
       </a>
       <a 
-        href="/blog" 
+        href={`${baseUrl}blog/`} 
         class:list={[
           "text-sm font-semibold transition-colors",
-          currentPath === '/blog' || currentPath.startsWith('/blog/')
+          currentPath.includes('/blog')
             ? "text-primary" 
             : "text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary"
         ]}
@@ -68,7 +70,7 @@ const currentPath = Astro.url.pathname;
     <!-- CTA -->
     <div class="flex items-center gap-4">
       <a 
-        href="/contact" 
+        href={`${baseUrl}contact/`} 
         class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded text-sm font-bold uppercase tracking-wider transition-all flex items-center gap-2"
       >
         <Icon name="send" size={16} />
