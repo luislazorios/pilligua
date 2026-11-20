@@ -5,26 +5,26 @@ import Select from '../shared/Select.astro';
 import Icon from '../shared/Icon.astro';
 
 const projectTypes = [
-  { value: 'residential', label: 'Residential' },
-  { value: 'commercial', label: 'Commercial' },
-  { value: 'interior', label: 'Interior Design' },
-  { value: 'urban', label: 'Urban Planning' }
+  { value: 'cocina', label: 'Cocina' },
+  { value: 'baño', label: 'Baño' },
+  { value: 'perzonalizado', label: 'Personalizado' },
+  { value: 'living', label: 'Living' }
 ];
 ---
 
 <div class="bg-white dark:bg-slate-900 p-8 md:p-12 rounded shadow-sm border border-slate-200 dark:border-slate-800">
   <form action="#" class="space-y-8" method="POST">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <Input label="Full Name" name="name" placeholder="Jane Doe" required />
-      <Input label="Email Address" name="email" type="email" placeholder="jane@example.com" required />
+      <Input label="Nombre Completo" name="name" placeholder="Juan Perez" required />
+      <Input label="E-mail" name="email" type="email" placeholder="juanito@ejemplo.com" required />
     </div>
     
     <Select label="Project Type" name="projectType" options={projectTypes} />
     
     <Textarea 
-      label="Message" 
+      label="Mensaje" 
       name="message" 
-      placeholder="Tell us about your project goals, location, and timeline..." 
+      placeholder="Cuéntanos sobre tu projecto, dimensiones, fechas, etc." 
       rows={6} 
       required 
     />
